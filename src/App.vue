@@ -1,11 +1,14 @@
 <script>
     import { def } from '@vue/shared';
 
-    import AppHeader from '/src/components/AppHeader.vue'    
+    import AppHeader from '/src/components/AppHeader.vue'
+    
+    import AppMain from '/src/components/AppMain.vue'
 
     export default {
         components: {
         AppHeader,
+        AppMain,
         }
     }
 
@@ -14,6 +17,7 @@
 <template>
 
     <AppHeader />
+    <AppMain />
 
 </template>
 
