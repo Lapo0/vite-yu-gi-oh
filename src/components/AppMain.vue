@@ -38,7 +38,7 @@
             fetchCharacters() {
             console.log('fetching data');
             axios
-                .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
+                .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100&offset=0')
                 .then((res) => {
                     const data = res.data.data;
                     const cards = [];

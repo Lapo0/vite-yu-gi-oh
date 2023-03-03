@@ -54,6 +54,7 @@ export default {
     .card__name {
         font-size: 20px;
         color: white;
+        padding-bottom: 10px;
     }
 
     .card__archetype {
