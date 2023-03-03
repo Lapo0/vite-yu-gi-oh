@@ -1,17 +1,24 @@
 <script>
-import { def } from '@vue/shared';
+    import { def } from '@vue/shared';
 
-export default {
+    import AppHeader from '/src/components/AppHeader.vue'    
 
-}
+    export default {
+        components: {
+        AppHeader,
+        }
+    }
 
 </script>
 
 <template>
 
+    <AppHeader />
 
 </template>
 
 <style lang="scss">
+
+@use '/src/style/general.scss';
 
 </style>
