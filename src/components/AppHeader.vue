@@ -11,7 +11,7 @@
     export default {
         data() {
             return {
-                title: 'YU-GI-OH'
+                title: 'Yu-Gi-Oh API'
             }
         }
         
@@ -20,11 +20,10 @@
 
 <style lang="scss" scoped>
 
-    .main-header {
-    text-align: center;
+    .header {
     font-size: 2rem;
-    background-color: red;
     padding: 1rem 0;
+    padding: 30px;
     }
-    
+
 </style>

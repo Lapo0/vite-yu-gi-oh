@@ -63,8 +63,16 @@
 
 <style lang="scss" scoped>
 
+@use '/src/style/partials/_variables.scss' as *;
+
 .main {
   padding: 100px 0;
+  background-color: $brown;
+
+  .container {
+    background-color: white;
+    padding: 30px;
+  }
 }
 .cards {
   display: grid;
