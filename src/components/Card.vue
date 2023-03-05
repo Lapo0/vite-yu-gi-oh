@@ -12,14 +12,11 @@
 <script>
 export default {
     props: {
-    // passo l'oggetto intero
-    card: {
-        type: Object,
-        required: true,
-    }
-
-    
-        
+        // passo l'oggetto intero
+        card: {
+            type: Object,
+            required: true,
+        }
     }
 }
 </script>

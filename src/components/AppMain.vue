@@ -27,12 +27,15 @@
         data() {
             return {
                 store,
-                cards: [],
             }
         },
+        // per sostituire nel ciclo for nel template, al posto di mettere
+        // tutto il percorso che deve fare, creo un computed per utilizzare solo
+        // la parola chiave, utile soprattutto per quando i dati nello store
+        // sono annidati 
         computed: {
-            card() {
-                return this.store.card
+            cards() {
+                return this.store.cards
             }
         },
         methods: {
@@ -42,7 +45,7 @@
                 .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100&offset=0')
                 .then((res) => {
                     console.log(res.data.data)
-                    this.cards = res.data.data
+                    this.store.cards = res.data.data
                 });
             },
         },
@@ -65,43 +68,14 @@
   .container {
     background-color: white;
     padding: 30px;
-  }
-}
-.cards {
-  display: grid;
-  gap: 40px;
-  grid-template-columns: repeat(4,1fr);
 
-  .card {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-
-  img {
-    object-fit: cover;
-    display: block;
-  }
-
-  .text {
-    background-color: $brown;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 15px;
-
-    .card__name {
-        font-size: 20px;
-        color: white;
-        padding-bottom: 10px;
-    }
-
-    .card__archetype {
-        font-size: 20px;
+    .cards {
+        display: grid;
+        gap: 40px;
+        grid-template-columns: repeat(4,1fr);
     }
   }
-  
 }
-}
+
     
 </style>

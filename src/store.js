@@ -1,7 +1,7 @@
 import { reactive } from 'vue'
 
 const store = reactive({
-	card: [],
+	cards: [],
 })
 
 export default store
