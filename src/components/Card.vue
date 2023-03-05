@@ -1,9 +1,10 @@
 <template>
+    
     <li class="card">
-        <img :src="srcImage" alt="">
+        <img :src="card.card_images[0].image_url" alt="">
         <div class="text">
-            <h3 class="card__name">{{ name }}</h3>
-            <p class="card__archetype"> {{ archetype }}</p>
+            <h3 class="card__name">{{ card.name }}</h3>
+            <p class="card__archetype"> {{ card.archetype }}</p>
         </div>
     </li>
 </template>
@@ -11,19 +12,13 @@
 <script>
 export default {
     props: {
-    // PASSO I SINGOLI DATI COME PROP
+    // passo l'oggetto intero
+    card: {
+        type: Object,
+        required: true,
+    }
 
-        srcImage: {
-            type: String,
-            required: true,
-        },
-        name: {
-            type: String,
-            required: true,
-        },
-        archetype: {
-            type: String,
-        },
+    
         
     }
 }

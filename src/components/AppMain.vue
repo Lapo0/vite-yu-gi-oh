@@ -3,13 +3,7 @@
         <div class="container">
             <ul class="cards">
 
-                <li v-for="card in cards" :key="card.id"  class="card">
-                    <img :src="card.card_images[0].image_url" alt="">
-                    <div class="text">
-                        <h3 class="card__name">{{ card.name }}</h3>
-                        <p class="card__archetype"> {{ card.archetype }}</p>
-                    </div>
-                </li>
+                <Card v-for="card in cards" :key="card.id" :card="card"/>
                 
             </ul>
         </div>
@@ -21,10 +15,15 @@
 
     import axios from 'axios'
 
+    import Card from '/src/components/Card.vue'
+
     import store from '../store'
 
 
     export default {
+        components: {
+            Card,
+        },
         data() {
             return {
                 store,
