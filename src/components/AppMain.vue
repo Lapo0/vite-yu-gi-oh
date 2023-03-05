@@ -3,7 +3,13 @@
         <div class="container">
             <ul class="cards">
 
-                <Card v-for="element in store.card" :key="element.id" :srcImage="element.srcImage" :name="element.name" :archetype="element.archetype" />
+                <li v-for="card in cards" :key="card.id"  class="card">
+                    <img :src="card.card_images[0].image_url" alt="">
+                    <div class="text">
+                        <h3 class="card__name">{{ card.name }}</h3>
+                        <p class="card__archetype"> {{ card.archetype }}</p>
+                    </div>
+                </li>
                 
             </ul>
         </div>
@@ -17,16 +23,12 @@
 
     import store from '../store'
 
-    import Card from '/src/components/Card.vue'
 
     export default {
-        components: {
-            Card,
-            
-        },
         data() {
             return {
                 store,
+                cards: [],
             }
         },
         computed: {
@@ -40,16 +42,8 @@
             axios
                 .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100&offset=0')
                 .then((res) => {
-                    const data = res.data.data;
-                    const cards = [];
-                    for (let i = 0; i < data.length; i++) {
-                        const card = {};
-                        card.srcImage = data[i].card_images[0].image_url;
-                        card.name = data[i].name;
-                        card.archetype = data[i].archetype;
-                        cards.push(card);
-                    }
-                    this.store.card = cards;
+                    console.log(res.data.data)
+                    this.cards = res.data.data
                 });
             },
         },
@@ -78,6 +72,37 @@
   display: grid;
   gap: 40px;
   grid-template-columns: repeat(4,1fr);
+
+  .card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    object-fit: cover;
+    display: block;
+  }
+
+  .text {
+    background-color: $brown;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+
+    .card__name {
+        font-size: 20px;
+        color: white;
+        padding-bottom: 10px;
+    }
+
+    .card__archetype {
+        font-size: 20px;
+    }
+  }
+  
+}
 }
     
 </style>
