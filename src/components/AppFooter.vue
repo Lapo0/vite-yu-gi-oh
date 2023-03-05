@@ -13,10 +13,10 @@
             </div>
             <div class="pages">
                 <p class="pages-remaining">
-
+                    {{ }}
                 </p>
                 <p class="current-page">
-
+                    {{  }}
                 </p>
             </div>
         </div>
@@ -34,7 +34,6 @@
                 store,
             }
         },
-
     }
 </script>
 
@@ -51,6 +50,13 @@
         padding: 10px;
         border-radius: 10px;
         border: 2px solid $brown;
+
+        &:hover {
+            background-image: url(https://whatsnewinpublishing.com/wp-content/uploads/2021/04/screen_2x-3-1170x780.jpg);
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
 
         span.num{
             font-size: 35px;

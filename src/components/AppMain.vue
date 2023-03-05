@@ -1,7 +1,6 @@
 <template>
     <main class="main">
         <div class="container">
-            
             <ul class="cards">
 
                 <Card v-for="card in cards" :key="card.id" :card="card"/>
@@ -43,18 +42,10 @@
             fetchCharacters() {
             console.log('fetching data');
             axios
-                .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=12&offset=0')
+                .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
                 .then((res) => {
                     console.log(res.data)
                     this.store.cards = res.data.data
-
-                    const {numCard, pagesRemaining} = res.data.meta
-                    console.log(res.data.meta)
-
-                    this.store.numCard = numCard
-
-                    this.store.pagesRemaining = pagesRemaining
-                    console.log(pagesRemaining)
                 });
             },
         },
@@ -72,7 +63,9 @@
 
     .main {
     padding: 100px 0;
-    background-color: $brown;
+    background-image: url(https://wallpapercave.com/wp/wp2311074.png);
+    background-size: cover;
+    background-position: center;
 
     .container {
         background-color: white;
