@@ -31,34 +31,40 @@
     display: flex;
     flex-direction: column;
 
-    img {
-        object-fit: cover;
-        display: block;
-    }
-
-    .text {
-        background-image: url(https://whatsnewinpublishing.com/wp-content/uploads/2021/04/screen_2x-3-1170x780.jpg);
-        background-size: cover;
-        background-position: center;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 15px;
-
-        .card__name {
-            font-size: 20px;
-            color: white;
-            padding-bottom: 10px;
+    &:hover {
+            filter: drop-shadow(16px 16px 20px rgb(43, 24, 24))
         }
 
-        .card__archetype {
-            font-size: 20px;
-            color: white;
-            font-family: 'Mynerve', cursive;
+
+        img {
+            object-fit: cover;
+            display: block;
         }
-    }
-    
+
+        .text {
+            background-image: url(https://whatsnewinpublishing.com/wp-content/uploads/2021/04/screen_2x-3-1170x780.jpg);
+            background-size: cover;
+            background-position: center;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 15px;
+            border-radius: 0 0 25px 25px;
+
+            
+            .card__name {
+                font-size: 20px;
+                color: white;
+                padding-bottom: 10px;
+            }
+
+            .card__archetype {
+                font-size: 20px;
+                color: white;
+                font-family: 'Mynerve', cursive;
+            }
+        }
     }
     
 </style>
