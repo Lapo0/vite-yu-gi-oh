@@ -2,10 +2,7 @@
     <main class="main">
         <div class="container">
             <div class="row">
-                <input type="text" v-model="store.inputSearch">
-                <p>
-                    {{ search }}
-                </p>
+                <Filters @onSearch="fetchCharacters" />
             </div>
         </div>
         <div class="container">
@@ -23,14 +20,17 @@
 
     import axios from 'axios'
 
+    import store from '../store'
+
     import Card from '/src/components/Card.vue'
 
-    import store from '../store'
+    import Filters from '/src/components/Filters.vue'
 
 
     export default {
         components: {
             Card,
+            Filters,
         },
         data() {
             return {
@@ -45,9 +45,6 @@
             cards() {
                 return this.store.cards
             },
-            search() {
-                return this.store.inputSearch
-            }
         },
         methods: {
             fetchCharacters() {
@@ -57,7 +54,11 @@
                 console.log('input search= ', search)
 
             axios
-                .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
+                .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0', {
+                    params: {
+                        fname: search,
+                    }
+                })
                 .then((res) => {
                     console.log(res.data)
                     this.store.cards = res.data.data
