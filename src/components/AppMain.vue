@@ -1,6 +1,14 @@
 <template>
     <main class="main">
         <div class="container">
+            <div class="row">
+                <input type="text" v-model="store.inputSearch">
+                <p>
+                    {{ search }}
+                </p>
+            </div>
+        </div>
+        <div class="container">
             <ul class="cards">
 
                 <Card v-for="card in cards" :key="card.id" :card="card"/>
@@ -36,16 +44,24 @@
         computed: {
             cards() {
                 return this.store.cards
+            },
+            search() {
+                return this.store.inputSearch
             }
         },
         methods: {
             fetchCharacters() {
             console.log('fetching data');
+
+                const search = this.store.inputSearch
+                console.log('input search= ', search)
+
             axios
                 .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0')
                 .then((res) => {
                     console.log(res.data)
                     this.store.cards = res.data.data
+
                 });
             },
         },
@@ -70,6 +86,18 @@
     .container {
         background-color: white;
         padding: 30px;
+
+        .row {
+            text-align: center;
+            justify-content: center;
+            gap: 40px;
+
+            input {
+                line-height: 40px;
+                font-size: 25px;
+            }
+        }
+        
 
         .cards {
             display: grid;
