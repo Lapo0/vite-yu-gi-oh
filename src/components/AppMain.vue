@@ -2,7 +2,7 @@
     <main class="main">
         <div class="container">
             <div class="row">
-                <Filters @onSearch="fetchCharacters" />
+                <Filters @onSearch="fetchCard" @onCardsChange="fetchCard"/>
             </div>
         </div>
         <div class="container">
@@ -47,16 +47,20 @@
             },
         },
         methods: {
-            fetchCharacters() {
+            fetchCard() {
             console.log('fetching data');
 
                 const search = this.store.inputSearch
                 console.log('input search= ', search)
 
+                const numCard = this.store.selectedNumCard
+                console.log('num card = ', numCard)
+
             axios
-                .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0', {
+                .get('https://db.ygoprodeck.com/api/v7/cardinfo.php?&offset=0', {
                     params: {
                         fname: search,
+                        num: numCard,
                     }
                 })
                 .then((res) => {
@@ -68,7 +72,7 @@
         },
         created() {
             console.log('store',this.store)
-            this.fetchCharacters()
+            this.fetchCard()
         },
         
     }
@@ -93,12 +97,8 @@
             justify-content: center;
             gap: 40px;
 
-            input {
-                line-height: 40px;
-                font-size: 25px;
-            }
+            
         }
-        
 
         .cards {
             display: grid;
